@@ -1,3 +1,4 @@
+from logging import Logger
 import time
 import pyaudio
 import whisper
@@ -5,6 +6,7 @@ import numpy as np
 import webrtcvad
 from collections import deque
 
+logger = Logger('main')
 options = whisper.DecodingOptions(language="English")
 vad = webrtcvad.Vad(2)
 model = whisper.load_model("small")
@@ -28,6 +30,8 @@ if __name__ == "__main__":
     is_triggered = False
     frames = []
     start = time.time()
+    logger.info('starting...')
+    # print('starting...')
     while True:
         data = stream.read(CHUNK, exception_on_overflow=False)
         is_speech = vad.is_speech(data, RATE)
