@@ -157,6 +157,7 @@ dependencies = [
     { name = "setuptools-rust" },
     { name = "torch" },
     { name = "webrtcvad" },
+    { name = "webtypy" },
     { name = "workers-py" },
 ]
 
@@ -177,6 +178,7 @@ requires-dist = [
     { name = "setuptools-rust", specifier = ">=1.12.0" },
     { name = "torch", specifier = ">=2.9.0" },
     { name = "webrtcvad", specifier = ">=2.0.10" },
+    { name = "webtypy", specifier = ">=0.1.7" },
     { name = "workers-py", specifier = ">=1.6.1" },
 ]
 
@@ -1437,6 +1439,15 @@ name = "webrtcvad"
 version = "2.0.10"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/89/34/e2de2d97f3288512b9ea56f92e7452f8207eb5a0096500badf9dfd48f5e6/webrtcvad-2.0.10.tar.gz", hash = "sha256:f1bed2fb25b63fb7b1a55d64090c993c9c9167b28485ae0bcdd81cf6ede96aea", size = 66156 }
+
+[[package]]
+name = "webtypy"
+version = "0.1.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5e/89/c7a0311fdc73809fc2415be97767f085ff3e00c86546430034dc8465fee7/webtypy-0.1.7.tar.gz", hash = "sha256:1b7212719a949c802f3d60fac5f0d952eb503a92121409cf1ad9847d7c76a336", size = 104505 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/61/91/c731bdaa605279e00b28bfd2bf0ae67f48061d16890fb1c026924bfbd242/webtypy-0.1.7-py3-none-any.whl", hash = "sha256:f35e6d73a4e08783e23adfac271a11cda3a2bd1105499db70e4819244efed0ae", size = 103519 },
+]
 
 [[package]]
 name = "workers-py"
