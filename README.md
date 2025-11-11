@@ -1,0 +1,2 @@
+# HAL
+agentic voice assistant
