@@ -1,6 +1,0 @@
-# services:
-#   tts:
-#     build:
-#       context: whisper.cpp
-#       dockerfile: ../tts.Dockerfile
-# volumes:
