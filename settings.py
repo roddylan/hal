@@ -1,14 +1,11 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-
 class Settings(BaseSettings):
-  model_config = SettingsConfigDict(env_file=".env")
+    account_id: str
+    api_token: str
 
-  account_id: str
-  api_token: str
+    model_config = SettingsConfigDict(env_file=".env")
 
-  
 
-  
 settings = Settings()

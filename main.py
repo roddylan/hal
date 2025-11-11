@@ -6,7 +6,8 @@ import numpy as np
 import webrtcvad
 from collections import deque
 
-logger = logging.getLogger('hal_main')
+
+logger = logging.getLogger("hal_main")
 logging.basicConfig(level="INFO")
 
 options = whisper.DecodingOptions(language="English")
@@ -31,9 +32,10 @@ if __name__ == "__main__":
     ring_buffer = deque(maxlen=NUM_PADDING_CHUNKS)
     is_triggered = False
     frames = []
-    logger.info('starting...')
+    logger.info("starting...")
 
-    # todo: improve detection, allow interrupt ?
+    # todo: improve turn detection, allow interrupt ?
+    # maybe use pipecat smart turn
     while True:
         data = stream.read(CHUNK, exception_on_overflow=False)
         is_speech = vad.is_speech(data, RATE)
@@ -41,8 +43,8 @@ if __name__ == "__main__":
             ring_buffer.append((data, is_speech))
             n_voiced = len([f for f, _is_speech in ring_buffer if _is_speech])
             if n_voiced > 0.9 * ring_buffer.maxlen:
-                # talking 
-                logger.info('talking')
+                # talking
+                logger.info("talking")
                 is_triggered = True
                 frames.extend([f for f, _ in ring_buffer])
                 ring_buffer.clear()
@@ -52,9 +54,12 @@ if __name__ == "__main__":
             n_unvoiced = len([f for f, _is_speech in ring_buffer if not _is_speech])
             if n_unvoiced > 0.9 * ring_buffer.maxlen:
                 # stopped talking
-                logger.info('stopped talking')
+                logger.info("stopped talking")
                 is_triggered = False
-                audio = np.frombuffer(b''.join(frames), dtype=np.int16).astype(np.float32) / 32768.0
+                audio = (
+                    np.frombuffer(b"".join(frames), dtype=np.int16).astype(np.float32)
+                    / 32768.0
+                )
                 result = model.transcribe(audio, fp16=False)["text"].strip()
                 # mel = whisper.log_mel_spectrogram(whisper.pad_or_trim(audio), n_mels=model.dims.n_mels).to(model.device)
                 # result = whisper.decode(model, mel, options).text
