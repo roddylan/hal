@@ -5,12 +5,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "ipykernel>=7.1.0",
     "langgraph>=1.0.3",
     "logging>=0.4.9.6",
     "numpy>=1.22.0",
     "openai-whisper>=20250625",
     "pyaudio>=0.2.14",
     "pydantic-settings>=2.12.0",
+    "pyobjc>=12.0",
+    "pyttsx3>=2.99",
     "setuptools-rust>=1.12.0",
     "torch>=2.9.0",
     "webrtcvad>=2.0.10",
