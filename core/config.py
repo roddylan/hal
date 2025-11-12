@@ -2,8 +2,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    account_id: str
-    api_token: str
+    cloudflare_account_id: str
+    cloudflare_api_token: str
+
+    gemini_api_token: str
 
     model_config = SettingsConfigDict(env_file=".env")
 
